@@ -6,14 +6,12 @@ REM License: https://github.com/kholoudbendriss/SpooferMyRust/blob/main/LICENSE
 chcp 65001 >nul
 setlocal
 
-:: Determine the directory of this batch script
 set "SCRIPT_DIR=%~dp0"
 set "PS_SCRIPT=%SCRIPT_DIR%Spoofer.ps1"
 
 echo [INFO] Initializing system randomization process...
 echo [INFO] Elevating privileges and executing PowerShell payload...
 
-:: Launch PowerShell payload as Administrator
 powershell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File ''%PS_SCRIPT%''' -Verb RunAs"
 
 echo [INFO] Execution triggered successfully.
