@@ -15,7 +15,6 @@
     Author: Kholoudbendriss (Smofeng, sswdwsw)
 #>
 
-#Requires -RunAsAdministrator
 #Requires -Version 5.1
 
 $ErrorActionPreference = 'Stop'
@@ -128,9 +127,16 @@ function Main {
         Invoke-RandomizeMacAddresses
         
         Write-Log -Message "Randomization process completed successfully."
+        Write-Host "==========================================" -ForegroundColor Green
+        Write-Host "[SUCCESS] All parameters spoofed successfully!" -ForegroundColor Green
+        Write-Host "[NOTE] Reboot computer to apply new Hostname." -ForegroundColor Yellow
+        Write-Host "==========================================" -ForegroundColor Green
     } catch {
         Write-Log -Message "A fatal error occurred during execution: $_" -Level 'ERROR'
-        Exit 1
+        Write-Host "[ERROR] $_" -ForegroundColor Red
+    } finally {
+        Write-Host "`nPress Enter to close window..." -ForegroundColor Cyan
+        [void][System.Console]::ReadLine()
     }
 }
 
