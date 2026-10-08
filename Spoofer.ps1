@@ -21,7 +21,6 @@
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 
-# Configuration
 $LogFilePath = Join-Path -Path $env:TEMP -ChildPath "spoofer_execution_$(Get-Date -Format 'yyyyMMdd_HHmmss').log"
 
 function Write-Log {
@@ -87,7 +86,6 @@ function Invoke-RandomizeMacAddresses {
     }
 
     foreach ($Adapter in $NetAdapters) {
-        # Valid starting bytes for a locally administered MAC address
         $FirstByte = ('02', '06', '0A', '0E') | Get-Random
         $RemainingBytes = (1..5) | ForEach-Object { '{0:X2}' -f (Get-Random -Minimum 0 -Maximum 256) }
         $NewMac = $FirstByte + ($RemainingBytes -join '')
