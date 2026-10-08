@@ -12,7 +12,7 @@ set "PS_SCRIPT=%SCRIPT_DIR%Spoofer.ps1"
 echo [INFO] Initializing system randomization process...
 echo [INFO] Elevating privileges and executing PowerShell payload...
 
-powershell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File ''%PS_SCRIPT%''' -Verb RunAs"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File \"\"%PS_SCRIPT%\"\"' -Verb RunAs"
 
 echo [INFO] Execution triggered successfully.
 echo [INFO] Please review the generated log file located in your TEMP folder for details.
